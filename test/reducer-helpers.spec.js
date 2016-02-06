@@ -49,10 +49,10 @@ describe('reducer-helpers', function () {
       const state = userGen();
       const setProps = helpers.setPropsBy(
         o => o.id,
-        ({foo}) => ({foo})
+        ({foo}, {name}) => ({foo: foo + name})
       );
       const newState = setProps(state, { id: 2, foo: 'bar' });
-      const updatedObjects = newState.filter(o => o.foo === 'bar');
+      const updatedObjects = newState.filter(o => o.foo === 'bar' + state[2].name);
 
       expect(state).not.toEqual(newState);
       expect(updatedObjects.length).toBe(1);

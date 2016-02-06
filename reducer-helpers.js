@@ -26,7 +26,7 @@ function setPropsBy (getId, props) {
   return function (state, action) {
     var actionId = getId(action);
     return state.map(function (o) {
-      return getId(o) !== actionId ? o : mix(o, getProps(action))
+      return getId(o) !== actionId ? o : mix(o, getProps(action, o))
     })
   }
 }
