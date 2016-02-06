@@ -1,6 +1,8 @@
 ## reduxr-reducer-helpers
 
-A utility to handle common array manipulation reducer functions
+A utility to handle common array manipulation reducer functions.
+
+Part of the [reduxr](https://github.com/chrisdavies/reduxr) family of packages.
 
 [![Build Status](https://travis-ci.org/chrisdavies/reduxr-reducer-helpers.svg?branch=master)](https://travis-ci.org/chrisdavies/reduxr-reducer-helpers)
 
