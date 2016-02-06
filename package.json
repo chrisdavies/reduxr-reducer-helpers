@@ -1,6 +1,6 @@
 {
   "name": "reduxr-reducer-helpers",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "Helpers for really common reducer functionality",
   "main": "reducer-helpers.js",
   "directories": {},
