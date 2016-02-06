@@ -49,13 +49,17 @@ There are a handful of functions in `reducer-helpers`. You can check out the sou
 
 `setPropsByDataId` - Sets properties of any items in an array that whose id matches `action.data.id` (useful when dealing with ajax results)
 
-These four functions cover many common scenarios. The `setPropsById` and `setPropsByDataId` functions can be passed an object which contains literal property values:
+These four functions cover many common scenarios. 
+
+## Modifying an item in a list
+
+The `setPropsById` and `setPropsByDataId` functions are used to modify an item in a list. They can be passed an object which contains literal property values:
 
 ```js
 setPropsById({name: 'John'})
 ```
 
-Or it can be passed a function which takes an action and returns the properties to be set:
+Or they can be passed a function which takes an action and returns the properties to be set:
 
 ```js
 setPropsById(action => ({name: action.fullName}))
