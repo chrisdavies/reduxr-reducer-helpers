@@ -6,14 +6,16 @@ A utility to handle common array manipulation reducer functions
 
 ## Usage
 
-It's pretty common to see a reducer that looks like this:
+A vast majority of reducers deal with arrays, and need to be able to remove an item by it's id, or to modify an item by its id.
+
+It's pretty common to see a Redux reducer that looks something like this:
 
 ```js
 export default objReducer([], {
-  // Remove a specified member from the list...
+  // Use id to remove a certain member of a list
   removeMember_done: (state, {data}) => state.filter(m => m.id !== data.id),
 
-  // Find a specified member and update it...
+  // Use id to update a certain member of a list
   activateMember_done: (state, {data}) =>
     state.map(m => m.id === data.id ? {...m, isActive: true} : m)
 })
@@ -33,17 +35,19 @@ export default objReducer([], {
 })
 ```
 
+## Helper functions
+
 There are a handful of functions in `reducer-helpers`. You can check out the source. But here's the list:
 
-`removeById` - Remove an item from an array using the action.id property.
+`removeById` - Remove an item from an array using the `action.id` property.
 
-`removeByDataId` - Remove an item from an array using the action.data.id property (useful when dealing with ajax results)
+`removeByDataId` - Remove an item from an array using the `action.data.id` property (useful when dealing with ajax results)
 
 `setPropsById` - Sets properties of any items in an array that whose id matches `action.id`
 
 `setPropsByDataId` - Sets properties of any items in an array that whose id matches `action.data.id` (useful when dealing with ajax results)
 
-These four functions cover a tremendous number of common scenarios. The `setPropsById` and `setPropsByDataId` functions can be passed an object which contains literal property values:
+These four functions cover many common scenarios. The `setPropsById` and `setPropsByDataId` functions can be passed an object which contains literal property values:
 
 ```js
 setPropsById({name: 'John'})
@@ -53,6 +57,12 @@ Or it can be passed a function which takes an action and returns the properties 
 
 ```js
 setPropsById(action => ({name: action.fullName}))
+```
+
+The item being modified is also passed as an optional second parameter:
+
+```js
+toggleIsComplete((_, item) => ({isComplete: !item.isComplete}))
 ```
 
 ## License MIT
